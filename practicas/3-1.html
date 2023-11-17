@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        * {
+            font-family: Consolas, monospace;
+        }
+    </style>
+    <title>Rebeca Sánchez</title>
+</head>
+
+<body>
+
+    <script>
+        var opcion = Number(prompt("Que ejercicio quieres realizar?(1-5): "));
+        while (opcion < 1 || opcion > 5 || isNaN(opcion)) {
+            opcion = Number(prompt("Ese ejercicio no existe, inseter un numero del 1 al 5"));
+        }
+        //do {
+        switch (opcion) {
+            case 1:
+                var a = prompt("Escriba una frase: ");
+                palabras = a.split(" "); //almacena en un array la frase separada por espacios
+                for (let i of palabras) {
+                    document.write(i.charAt(0).toUpperCase() + i.slice(1).toLowerCase() + " ");
+                }
+                break;
+            case 2:
+                var a = prompt("Escriba una password: ");
+                var b = prompt("Escriba la clave: ");
+                var j = 0;
+                for (let i = 0; i < a.length; i++) {   //se puede hacer con un forin que coge la posicion de la letra en el array
+                    var codigo = a.charCodeAt(i);
+                    var clave = Number(b.charAt(j));
+                    var cifrado = String.fromCharCode(codigo + clave);
+                    j == b.length - 1 ? j = 0 : j++;
+                    document.write(cifrado);
+                }
+                break;
+            case 3:
+                var numeros = "0123456789";
+                var minus = "abcdefghijklmnñopqrstuvwxyz";
+                var mayus = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+                var esUsuarioValido = true;
+                var esPassValida = true;
+                var esNum = false;
+                var esMinus = false;
+                var esMayus = false;
+                var esEspecial = false;
+                do {
+                    var user = prompt("Escriba su usuario: ");
+                    for (var caracter of user) {
+                        if (!numeros.includes(caracter) && !minus.includes(caracter)) {
+                            esUsuarioValido = false;
+                        }
+                    }
+                    if (!esUsuarioValido) {
+                        alert("Error: usuario incorrecto");
+                        esUsuarioValido = true;
+                    }
+                } while (!esUsuarioValido);
+                do {
+                    var pass = prompt("Escriba su password: ");
+                    for (var caracter of pass) {
+                        if (numeros.includes(caracter)) {
+                            esNum = true;
+                        } else if (minus.includes(caracter)) {
+                            esMinus = true;
+                        } else if (mayus.includes(caracter)) {
+                            esMayus = true;
+                        } else {
+                            esEspecial = true;
+                        }
+                    }
+                    if (esNum && esMinus && esMayus && esEspecial) {
+                        alert("Se ha almacenado correctamente la información. Usuario: " + user + ",Contraseña: " + pass);
+                        esPassValida = true;
+                    } else {
+                        alert("Error: contraseña incorrecta");
+                        esPassValida = false;
+                        esNum = false;
+                        esMinus = false;
+                        esMayus = false;
+                        esEspecial = false;
+                    }
+                } while (!esPassValida);
+                //numeros.includes(pass[index]);
+                break;
+            case 4:
+                var palabras = [];
+                var palabra = "";
+                palabra = prompt("Escriba una palabra: ");
+                while (palabra != null) {
+                    palabras.push(palabra);
+                    palabra = prompt("Escriba otra palabra: ");
+                }
+                do {
+                    var opcion = Number(prompt("1) Ver primera palabra insertada,\n2) Ver última palabra insertada,\n3) Ver todas las palabras,\n4) Ver la palabra más larga,\n5) Ver la palabra más corta,\n6) Número de palabras insertadas,\n7) Buscar una palabra,\n8) Borrar duplicados,\n9) Salir"));
+                    switch (opcion) {
+                        case 1:
+                            alert(palabras[0]);
+                            break;
+                        case 2:
+                            alert(palabras[palabras.length - 1]);
+                            break;
+                        case 3:
+                            alert(palabras.join());
+                            break;
+                        case 4:
+                            var larga = palabras[0];
+                            for (var p of palabras) {
+                                if (p.length > larga.length) larga = p;
+                            }
+                            alert(larga);
+                            break;
+                        case 5:
+                            var corta = palabras[0];
+                            for (var p of palabras) {
+                                if (p.length < corta.length) corta = p;
+                            }
+                            alert(corta);
+                            break;
+                        case 6:
+                            alert(palabras.length);
+                            break;
+                        case 7:
+                            var palabraABuscar = prompt("Escriba la palabra a buscar: ");
+                            if (palabras.indexOf(palabraABuscar) == -1) {
+                                alert("Palabra no encontrada");
+                            } else {
+                                alert("Palabra encontrada, esta en la posicion: " + palabras.indexOf(palabraABuscar));
+                            }
+                            break;
+                        case 8:
+                            var conjunto = new Set(palabras);
+                            palabras = [...conjunto];
+                            break;
+                        default:
+                            alert("Error en la entrada");
+                            break;
+                    }
+                } while (opcion != 9);
+                break;
+            case 5:
+                const TAM_COLUMNAS = 10;
+                const TAM_FILAS = 10;
+                var tablero = new Array(TAM_FILAS);
+                //iniciar tablero
+                for (let i = 0; i < TAM_FILAS; i++) {
+                    tablero[i] = new Array(TAM_COLUMNAS);
+                    for (let j = 0; j < TAM_COLUMNAS; j++) {
+                        tablero[i][j] = false;
+                    }
+                }
+                var barcos = 0;
+
+                while (barcos < 2) {
+                    var direccion = parseInt(Math.random() * 2);
+                    var libre = true;
+                    if (direccion) {
+                        var fila = parseInt(Math.random() * 10);
+                        var columna = parseInt(Math.random() * 7);
+                        switch (fila) {
+                            case 0:
+                                switch (columna) {
+                                    case 0:
+                                        for (let c = 0; c < 5; c++) {
+                                            if (tablero[fila][columna + c] || tablero[fila + 1][columna + c]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    case 6:
+                                        for (let c = -1; c < 4; c++) {
+                                            if (tablero[fila][columna + c] || tablero[fila + 1][columna + c]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        for (let c = -1; c < 5; c++) {
+                                            if (tablero[fila][columna + c] || tablero[fila + 1][columna + c]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                }
+                                break;
+                            case 9:
+                                switch (columna) {
+                                    case 0:
+                                        for (let c = 0; c < 5; c++) {
+                                            if (tablero[fila][columna + c] || tablero[fila - 1][columna + c]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    case 6:
+                                        for (let c = -1; c < 4; c++) {
+                                            if (tablero[fila][columna + c] || tablero[fila - 1][columna + c]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        for (let c = -1; c < 5; c++) {
+                                            if (tablero[fila][columna + c] || tablero[fila - 1][columna + c]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                }
+                                break;
+                            default:
+                                switch (columna) {
+                                    case 0:
+                                        for (let c = 0; c < 5; c++) {
+                                            if (tablero[fila - 1][columna + c] || tablero[fila][columna + c] || tablero[fila + 1][columna + c]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    case 6:
+                                        for (let c = -1; c < 4; c++) {
+                                            if (tablero[fila - 1][columna + c] || tablero[fila][columna + c] || tablero[fila + 1][columna + c]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        for (let c = -1; c < 5; c++) {
+                                            if (tablero[fila - 1][columna + c] || tablero[fila][columna + c] || tablero[fila + 1][columna + c]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                }
+                                break;
+                        }
+                        //(random*(m-n+1))+n
+                        //Horizontal
+                        if (libre) {
+                            for (var k = columna; k < columna + 4; k++) {
+                                tablero[fila][k] = true;
+                            }
+                            barcos++;
+                        }
+                    } else {
+                        //Vertical
+                        var fila = parseInt(Math.random() * 7);
+                        var columna = parseInt(Math.random() * 10);
+                        switch (fila) {
+                            case 0:
+                                switch (columna) {
+                                    case 0:
+                                        for (let f = 0; f < 5; f++) {
+                                            if (tablero[fila + f][columna] || tablero[fila + f][columna + 1]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    case 9:
+                                        for (let f = 0; f < 5; f++) {
+                                            if (tablero[fila + f][columna] || tablero[fila + f][columna - 1]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        for (let f = 0; f < 5; f++) {
+                                            if (tablero[fila + f][columna - 1] || tablero[fila + f][columna] || tablero[fila + f][columna + 1]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                }
+                                break;
+                            case 6:
+                                switch (columna) {
+                                    case 0:
+                                        for (let f = -1; f < 4; f++) {
+                                            if (tablero[fila + f][columna] || tablero[fila + f][columna + 1]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    case 9:
+                                        for (let f = -1; f < 4; f++) {
+                                            if (tablero[fila + f][columna] || tablero[fila + f][columna - 1]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        for (let f = -1; f < 4; f++) {
+                                            if (tablero[fila + f][columna - 1] || tablero[fila + f][columna] || tablero[fila + f][columna + 1]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                }
+                                break;
+                            default:
+                                switch (columna) {
+                                    case 0:
+                                        for (let f = -1; f < 5; f++) {
+                                            if (tablero[fila + f][columna] || tablero[fila + f][columna + 1]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    case 9:
+                                        for (let f = -1; f < 5; f++) {
+                                            if (tablero[fila + f][columna] || tablero[fila + f][columna - 1]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        for (let f = -1; f < 5; f++) {
+                                            if (tablero[fila + f][columna - 1] || tablero[fila + f][columna] || tablero[fila + f][columna + 1]) {
+                                                libre = false;
+                                            }
+                                        }
+                                        break;
+                                }
+                                break;
+                        }
+                        if (libre) {
+                            for (var k = fila; k < fila + 4; k++) {
+                                tablero[k][columna] = true;
+                            }
+                            barcos++;
+                        }
+                    }
+                }
+                console.log(tablero.join())
+                //Dibujo del tablero
+                document.write("<div id='contenedor'>")
+                for (let i = 0; i < TAM_FILAS; i++) {
+                    for (let j = 0; j < TAM_COLUMNAS; j++) {
+                        if (tablero[i][j]) {//hay barco en esta celda
+                            document.write("<div class='celda ocupada'></div>");
+                        }
+                        else {
+                            document.write("<div class='celda'></div>");
+                        }
+                    }
+                }
+                document.write("</div>")
+                break;
+        }
+        /*    var otroejercicio = confirm("desea realizar otro ejercicio?");
+        } while (otroejercicio);*/
+
+    </script>
+</body>
+
+</html>
