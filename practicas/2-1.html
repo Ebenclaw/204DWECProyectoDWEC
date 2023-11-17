@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            font-family: Consolas, monospace;
+        }
+    </style>
+    <title>Rebeca Sánchez</title>
+</head>
+
+<body>
+
+    <script>
+        var opcion = Number(prompt("Que ejercicio quieres realizar?(1-14): "));
+        while (opcion < 1 || opcion > 14 || isNaN(opcion)) {
+            opcion = Number(prompt("Ese ejercicio no existe, inseter un numero del 1 al 14"));
+        }
+        //do {
+        switch (opcion) {
+            case 1:
+                alert("1.-Crea un script que pida por teclado dos números y genera 10 números aleatorios entre esos números.");
+                var a = Number(prompt("Introduce el primer numero: "));
+                var b = Number(prompt("Introduce el segundo numero: "));
+                while (a > b || isNaN(a) || isNaN(b)) {
+                    alert("Error: Los valores no son correctos");
+                    var a = Number(prompt("Introduce el primer numero: "));
+                    var b = Number(prompt("Introduce el segundo numero: "));
+                }
+                //(random*(m-n+1))+n
+                for (let i = 0; i < 10; i++) {
+                    document.write(parseInt((Math.random() * (b - a + 1)) + a));
+                    document.write(" ");
+                }
+                break;
+            case 2:
+                alert("2.-Crea un script, que pida al usuario un número. Indicar al usuario si lo que ha introducido, es un número o no, y si es un número, decir si es par o no y si es primo o no.");
+                var a = Number(prompt("Introduce un numero: "));
+
+                if (!isNaN(a)) {
+                    var primo = true;
+                    for (let i = 2; i <= a / 2; i++) {
+                        if (a % i == 0) {
+                            primo = false;
+                        }
+                    }
+                    if (a % 2 == 0) {
+                        alert("Es un numero par");
+                    } else {
+                        alert("Es un numero impar");
+                    }
+                    if (primo) {
+                        alert("Es un numero primo");
+                    } else {
+                        alert("No es un numero primo");
+                    }
+                } else {
+                    alert("No es un numero");
+                }
+                break;
+            case 3:
+                alert("3.-Crea un script que pida 2 números al usuario y una operación a realizar (suma, resta, multiplicación o división). En función de esos datos, se debe mostrar el resultado de la operación. Se debe comprobar que los datos introducidos sean números.");
+                var a = Number(prompt("Introduce el primer numero: "));
+                var b = Number(prompt("Introduce el segundo numero: "));
+                while (isNaN(a) || isNaN(b)) {
+                    alert("Error: Los valores no son correctos");
+                    var a = Number(prompt("Introduce el primer numero: "));
+                    var b = Number(prompt("Introduce el segundo numero: "));
+                }
+                var operacion = prompt("Introduce la operacion a realizar (+, -, * o /): ");
+                while (operacion != "+" && operacion != "-" && operacion != "*" && operacion != "/") {
+                    var operacion = prompt("Error: Operacion incorrecta. Introduce la operacion a realizar (+, -, * o /): ");
+                }
+                switch (operacion) {
+                    case "+":
+                        var c = a + b;
+                        alert("La resultade de la suma es: " + c);
+                        break;
+                    case "-":
+                        var c = a - b;
+                        alert("La resultade de la resta es: " + c);
+                        break;
+                    case "*":
+                        var c = a * b;
+                        alert("La resultade de la multiplicacion es: " + c);
+                        break;
+                    case "/":
+                        var c = a / b;
+                        alert("La resultade de la division es: " + c);
+                        break;
+                    default:
+                        alert("Error");
+                        break;
+                }
+                break;
+            case 4:
+                alert("4.-Crea un script que pida un número al usuario y muestre todos los números del 1 al 100 que sean divisibles por el número introducido. Se debe controlar que se introduzca un número y que el número este entre 1 y 100.");
+                var a = Number(prompt("Introduce un numero (1-100): "));
+                while (a < 1 || a > 100) {
+                    var a = Number(prompt("Error: El numero no esta en el rango 1-100. Introduce un numero (1-100): "));
+                }
+                for (let i = 1; i <= 100; i++) {
+                    if (i % a == 0) {
+                        document.write(i + " ");
+                    }
+                }
+                break;
+            case 5:
+                alert("5.-Crea un script que lea números enteros hasta que el usuario introduzca un número 0. Finalmente debe mostrar el número máximo, el mínimo y la media de todos ellos. Debes de controlar que introduzca números y no cualquier otro carácter.");
+                var a = Number(prompt("Introduce un numero: "));
+                while (isNaN(a)) {
+                    a = Number(prompt("Error: no es un numero. Introduzca un entro: "));
+                }
+                var mayor = a;
+                var menor = a;
+                var suma = 0;
+                var i = 0;
+                while (a != 0) {
+                    i++;
+                    suma += a;
+                    if (mayor < a) {
+                        mayor = a;
+                    } else if (menor > a) {
+                        menor = a;
+                    }
+                    var a = Number(prompt("Introduce un numero: "));
+                    while (isNaN(a)) {
+                        a = Number(prompt("Error: no es un numero. Introduzca un entro: "));
+                    }
+                }
+                document.write("Media: " + suma / i + "<br>Numero menor: " + menor + "<br>Numero mayor: " + mayor);
+                break;
+            case 6:
+                alert("6.-Crea un script que pedirá que introduzcas una contraseña 2 veces para evitar errores. A continuación, pedirá la contraseña al usuario dándole 3 intentos. Cuando aciertes ya no pedirá más la contraseña y mostrará un mensaje diciendo «Enhorabuena». Si no acierta en los 3 intentos, mostrará un mensaje de error y terminará.");
+                var pass = prompt("Introduce una nueva contraseña: ");
+                do {
+                    var pass2 = prompt("Confirme su contraseña: ");
+                } while (pass != pass2);
+
+                var intentos = 0;
+                do {
+                    var password = prompt("Inicio de sesion, introduzca su contraseña: ");
+                    intentos++;
+                } while (intentos < 3 && pass != password);
+
+                if (pass != password) {
+                    alert("Error: contraseña incorrecta");
+                } else {
+                    alert("Enhorabuena");
+                }
+                break;
+            case 7:
+                alert("7.-Pide por teclado un número entero positivo (debemos controlarlo) y muestra el número de cifras que tiene. Por ejemplo: si introducimos 1250, nos muestre que tiene 4 cifras.");
+                var a = Number(prompt("Introduce un numero: "));
+                while (a < 0 || isNaN(a)) {
+                    alert("Error: no es un numero entero positivo");
+                    var a = Number(prompt("Introduce un numero: "));
+                }
+                for (let cifras = 1; a / 10 > 1; cifras++) {
+                    a = a / 10;
+                }
+                document.write("Numero de cifras: " + cifras);
+                break;
+            case 8:
+                alert("8.-Escribe un script que muestre por pantalla los múltiplos de 2 que hay entre dos números que pides al usuario. El segundo número tiene que ser mayor o igual que el primer número.");
+                var a = Number(prompt("Introduce el primer numero: "));
+                var b = Number(prompt("Introduce el segundo numero: "));
+                while (a > b || isNaN(a) || isNaN(b)) {
+                    alert("Error: Los valores no son correctos");
+                    var a = Number(prompt("Introduce el primer numero: "));
+                    var b = Number(prompt("Introduce el segundo numero: "));
+                }
+                for (let i = a; i <= b; i++) {
+                    if (i % 2 == 0) {
+                        document.write(i);
+                        document.write(" ");
+                    }
+                }
+                break;
+            case 9:
+                alert("9.-Escribe un script que calcule la suma de los números pares y la suma de los números impares comprendidos entre dos números que le pides al usuario. Es decir, el usuario introduce por ejemplo el 45 y el 89 y debes de mostrar la suma de los números pares comprendidos entre el 45 y el 89 y por otro lado la suma de los números impares. No contar extremos, es decir, el 45 y el 89 en este caso no se tienen en cuenta.");
+                var a = Number(prompt("Introduce el primer numero: "));
+                var b = Number(prompt("Introduce el segundo numero: "));
+                while (a > b || isNaN(a) || isNaN(b)) {
+                    alert("Error: Los valores no son correctos");
+                    var a = Number(prompt("Introduce el primer numero: "));
+                    var b = Number(prompt("Introduce el segundo numero: "));
+                }
+                var sumapares = 0;
+                var sumaimpares = 0;
+                for (let i = a; i <= b; i++) {
+                    if (i % 2 == 0) {
+                        sumapares += i; /*sumapares = sumapares+i*/
+                    } else {
+                        sumaimpares += i;
+                    }
+                }
+                document.write("Suma pares: " + sumapares + "<br>Suma impares: " + sumaimpares);
+                break;
+            case 10:
+                alert("10.-Realiza un script que implemente un juego de encontrar un número aleatorio");
+                var juego = 0;
+                var again
+                var intentos
+                info = ""
+                do {
+                    var a = parseInt((Math.random() * (100 - 1 + 1)) + 1);
+                    intentos = 0;
+                    info = "";
+                    alert(a);
+                    do {
+                        var b = prompt("Introduce un numero del 1-100: ");
+                        while (b != null && (isNaN(b) || b < 1 || b > 100)) {
+                            alert("Error: valor introducido incorrecto");
+                            b = prompt("Introduce un numero del 1-100: ");
+                        }
+                        if (b == null) {
+                            again = false;
+                            info += "Juego terminado: NO <br>Numero de intentos: " + intentos + "<br>Numero acertado: NO<br>";
+                            document.write(info);
+                        } else if (a == b) {
+                            intentos++;
+                            alert("Enhorabuena!! Has acertado el numero: " + a);
+                            info += "Juego terminado: SI <br>Numero de intentos: " + intentos + "<br>Numero acertado: SI<br>";
+                            document.write(info);
+                            intentos = 6;
+                            again = confirm("¿Desea volver a jugar?");
+                        } else {
+                            intentos++;
+                            if (a < b && intentos != 5) {
+                                alert("El numero que tienes que adivinar es menor");
+                            } else if (a > b && intentos != 5) {
+                                alert("El numero que tienes que adivinar es mayor");
+                            }
+                            if (intentos == 5) {
+                                alert("Has perdido, ya no tienes mas intentos. El numero era: " + a);
+                                info += "Juego terminado: SI <br>Numero de intentos: " + intentos + "<br>Numero acertado: NO<br>";
+                                document.write(info);
+                                again = confirm("¿Desea volver a jugar?");
+                            }
+                        }
+                    } while (intentos < 5 && b != null);
+                } while (again);
+                alert("Se ha cancelado el juego");
+                break;
+            case 11:
+                alert("11.-Crea una aplicación web que pida al usuario un número entero positivo y dibuje triángulos con tantos asteriscos como haya indicado el usuario con el número introducido.");
+                var a = prompt("Introduce un numero del 1-10: ");
+                    document.write("<h3>Triangulo 1:</h3>");
+                    for(let i=1; i<=a; i++){
+                        for(let j=1; j<=i; j++){
+                            document.write("* ");
+                        }
+                        document.write("<br>");
+                    }
+
+                    document.write("<h3>Triangulo 2:</h3>");
+                    for(let i=a; i>=0; i--){
+                        for(let j=1; j<=i; j++){
+                            document.write("* ");
+                        }
+                        document.write("<br>");
+                    }
+
+                    document.write("<h3>Triangulo 3:</h3>");
+                    for (let i = 0; i < a; i++) {
+                        for (let index = a - i; index > 0; index--) {
+                            document.write("&nbsp");
+                        }
+                        for (let j = 0; j <= i; j++) {
+                            document.write("* ");
+                        }
+                        document.write("<br>");
+                    }
+
+                    document.write("<h3>Triangulo 4:</h3>");
+                    for (let i = 1; i <= a; i++) {
+                        for (let index = 0; index <= i - 1; index++) {
+                            document.write("&nbsp");
+                        }
+                        for (let j = a - i + 1; j >= 1; j--) {
+                            document.write("* ");
+                        }
+                        document.write("<br>");
+                    }
+                break;
+            case 12:
+                alert("12.-Crea una página web que pida al usuario números hasta que el usuario pulse el botón cancelar. Se debe comprobar si lo que inserta el usuario es un número o no. Al finalizar se debe mostrarla suma de todos los números introducidos y en el caso de que se hayan insertado caracteres no numéricos, mostrar también todos los caracteres que se han introducido");
+                var suma = 0;
+                    var letras = "";
+                    do {
+                        var a = prompt("Introduce un numero: ");
+                        if (isNaN(Number(a))) {
+                            letras += a;
+                        } else {
+                            suma += Number(a);
+                        }
+                    } while (a != null);
+                    document.write("El total es: " + suma + "<br>");
+                    document.write("Las letras son: " + letras);
+                break;
+            case 13:
+                alert("13.-Crea una página que muestre los primeros 10000 símbolos de la tabla Unicode. Se mostrará en una tabla en la que en cada fila se indica el número de código, seguido del carácter de ese código. En cada fila se mostrarán 10 símbolos. Un posible ejemplo de ejecución sería");
+                document.write("<table>");
+                    var b = 1;
+                    for (let index = 1; index <= 1000; index++) {
+                        document.write("<tr>")
+                        for (let i = 0; i < 10; i++) {
+                            var string = "&#"+b;
+                            document.write("<td>"+b+"</td>")
+                            document.write("<td>"+string+"</td>")
+                            b++
+                        }
+                        document.write("</tr>")
+                    }
+                    document.write("</table>");
+                break;
+            case 14:
+                alert("14.-Crea una aplicación web que muestre x cuadrados de color aleatorio de 50x50 píxeles. El número de cuadrados se lo pediremos al usuario. Su posición en la pantalla será también aleatoria. Ejemplo de resultado:"); 
+                var a = prompt("Dime cuantos cuadrados quieres:");
+                    //(random*(m-n+1))+n
+                    for (let index = 0; index < a; index++) {
+                        var r = parseInt(Math.random()*256);
+                        var g = parseInt(Math.random()*256);
+                        var b = parseInt(Math.random()*256);
+
+                        var t = parseInt(Math.random()*101);
+                        var l = parseInt(Math.random()*101);
+                        document.write(`<div style="background-color:rgb(${r},${g},${b}); width:100px; height:100px; top: ${t}%; left: ${l}%; position: fixed;"></div>`)
+                    }
+                break;
+            default:
+                break;
+        }
+        /*    var otroejercicio = confirm("desea realizar otro ejercicio?");
+        } while (otroejercicio);*/
+
+    </script>
+</body>
+
+</html>
