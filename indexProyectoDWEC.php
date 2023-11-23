@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>Práctica 3.1 - Trabajando con arrays, conjuntos y mapas</td>
-                <td></td>
+                <td><a href="practicas/3-1.html" target="_blank"><img src="webroot/image/play.png" alt="play"/></a></td>
                 <td><a href="doc/Práctica3.1.pdf" target="_blank"><img src="webroot/image/ojo.png" alt="ojo"/></a></td>
             </tr>
             <tr>
