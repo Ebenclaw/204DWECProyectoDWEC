@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebeca Sánchez</title>
+</head>
+
+<body>
+    <script>
+        var opcion = Number(prompt("Que ejercicio quieres realizar?(1-4): "));
+        while (opcion < 1 || opcion > 5 || isNaN(opcion)) {
+            opcion = Number(prompt("Ese ejercicio no existe, inseter un numero del 1 al 5"));
+        }
+        //do {
+        switch (opcion) {
+            case 1:
+                var a = Number(prompt("Dime un número: "));
+                function fibonacci(x) {
+                    if (x == 0) {
+                        return 0;
+                    } else if (x == 1) {
+                        return 1;
+                    } else {
+                        return fibonacci(x - 1) + fibonacci(x - 2);
+                    }
+                }
+                function iterador(x) {
+                    if (x == 0) {
+                        return 0;
+                    } else if (x == 1) {
+                        return 1;
+                    } else {
+                        var fib = [0, 1];
+                        for (let i = 2; i <= x; i++) {
+                            fib[i] = fib[i - 1] + fib[i - 2];
+                        }
+                        return fib[x];
+                    }
+                }
+                alert("El Fibonachito: " + fibonacci(a));
+                alert("El iterador: " + iterador(a));
+                break;
+            case 2:
+                var palabras = [];
+                var a = prompt("Dime una palabra: ");
+                while (a != null) {
+                    palabras.push(a);
+                    var a = prompt("Dime una palabra: ");
+                }
+                function arrayAMapa(x) {
+                    var mapa = new Map();
+                    for (const i of x) {
+                        if (!mapa.has(i)) {
+                            mapa.set(i, 1);
+                        } else {
+                            var valor = mapa.get(i);
+                            mapa.set(i, ++valor);
+                        }
+                    }
+                    return mapa;
+                }
+                console.log(arrayAMapa(palabras));
+                break;
+            case 3:
+                function arrayRandom(x = 10000) {
+                    var numeros = [];
+                    var contador = 0;
+                    while (contador != x) {
+                        numeros.push(parseInt(Math.random() * 10) + 1);
+                        contador++;
+                    }
+                    var mapa = new Map();
+                    for (const i of numeros) {
+                        if (!mapa.has(i)) {
+                            mapa.set(i, 1);
+                        } else {
+                            var valor = mapa.get(i);
+                            mapa.set(i, ++valor);
+                        }
+                    }
+                    return mapa;
+                }
+                console.log(arrayRandom(100));
+                break;
+            case 4:
+                var matriculas = new Map([
+                    ["1111BCD", "Seat"],
+                    ["2222DEF", "Audi"],
+                    ["3333FGH", "Mercedes"],
+                    ["4444HIJ", "Seat"],
+                    ["5555JKL", "Mercedes"],
+                    ["6666LMN", "Seat"]
+                ]);
+                function invertirMapa(ok) {
+                    var ko = new Map();
+                    for (var [matricula, marca] of ok) {
+                        var aClaves = [matricula];
+                        if (!ko.has(marca)) {
+                            ko.set(marca, aClaves);
+                        } else {
+                            ko.get(marca).push(matricula);
+                        }
+                    }
+                    return ko;
+                }
+                console.log(invertirMapa(matriculas));
+                break;
+        }
+    </script>
+</body>
+
+</html>

@@ -42,6 +42,22 @@ h1{
     color: #59483e;
     padding-top: 15px;
 }
+.error{
+    color: red;
+}
+.imgError{
+    display: block;
+    width: 600px;
+    margin: auto;
+    margin-top: 200px;
+}
+.divError{
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #F73C90;
+    text-align: center;
+}
 ul{
     width: 75%;
     height: 75%;

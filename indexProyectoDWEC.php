@@ -28,9 +28,9 @@
                 <td><a href="doc/Práctica3.1.pdf" target="_blank"><img src="webroot/image/ojo.png" alt="ojo"/></a></td>
             </tr>
             <tr>
-                <td>..</td>
-                <td></td>
-                <td></td>
+                <td>Práctica 3.1 - Trabajando con funciones</td>
+                <td><a href="practicas/3-2.html" target="_blank"><img src="webroot/image/play.png" alt="play"/></a></td>
+                <td><a href="doc/Práctica3.2.pdf" target="_blank"><img src="webroot/image/ojo.png" alt="ojo"/></a></td>
             </tr>
             <tr>
                 <td>..</td>
@@ -57,7 +57,7 @@
     <footer>
         <div id="derechos">2023-2024 © Todos los derechos reservados: <a href="../index.html">Rebeca Sánchez Pérez</a></div>
         <div id="fotos">
-            <a href="https://github.com/Ebenclaw" target="_blank"><img id="git" src="webroot/image/GitHub.png" alt="GitHub"></a>
+            <a href="https://github.com/Ebenclaw/204DWECProyectoDWEC" target="_blank"><img id="git" src="webroot/image/GitHub.png" alt="GitHub"></a>
             <a href="http://ieslossauces.centros.educa.jcyl.es/sitio/" target="_blank"><img id="sauces" src="webroot/image/sauces.png" alt="Sauces"></a>
             <a href="../index.html"><img id="home" src="webroot/image/home.png" alt="Inicio"></a>
         </div>
