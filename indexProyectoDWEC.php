@@ -28,29 +28,29 @@
                 <td><a href="doc/Práctica3.1.pdf" target="_blank"><img src="webroot/image/ojo.png" alt="ojo"/></a></td>
             </tr>
             <tr>
-                <td>Práctica 3.1 - Trabajando con funciones</td>
+                <td>Práctica 3.2 - Trabajando con funciones</td>
                 <td><a href="practicas/3-2.html" target="_blank"><img src="webroot/image/play.png" alt="play"/></a></td>
                 <td><a href="doc/Práctica3.2.pdf" target="_blank"><img src="webroot/image/ojo.png" alt="ojo"/></a></td>
             </tr>
             <tr>
-                <td>..</td>
-                <td></td>
-                <td></td>
+                <td>Práctica 4.1 - Trabajando con clases</td>
+                <td><a href="practicas/4-1.html" target="_blank"><img src="webroot/image/play.png" alt="play"/></a></td>
+                <td><a href="doc/Práctica4.1.pdf" target="_blank"><img src="webroot/image/ojo.png" alt="ojo"/></a></td>
             </tr>
             <tr>
-                <td>..</td>
-                <td></td>
-                <td></td>
+                <td>Práctica 4.2 - Trabajando con funciones y expresiones regulares</td>
+                <td><a href="practicas/4-2.html" target="_blank"><img src="webroot/image/play.png" alt="play"/></a></td>
+                <td><a href="doc/Práctica4.2.pdf" target="_blank"><img src="webroot/image/ojo.png" alt="ojo"/></a></td>
             </tr>
             <tr>
-                <td>..</td>
-                <td></td>
-                <td></td>
+                <td>Práctica 5.1 - Trabajando con DOM</td>
+                <td><a href="practicas/5-1.html" target="_blank"><img src="webroot/image/play.png" alt="play"/></a></td>
+                <td><a href="doc/Práctica5.1.pdf" target="_blank"><img src="webroot/image/ojo.png" alt="ojo"/></a></td>
             </tr>
             <tr>
-                <td>..</td>
-                <td></td>
-                <td></td>
+                <td>Práctica 6.1 - Trabajando con eventos</td>
+                <td><a href="practicas/6-1.html" target="_blank"><img src="webroot/image/play.png" alt="play"/></a></td>
+                <td><a href="doc/Práctica6.1.pdf" target="_blank"><img src="webroot/image/ojo.png" alt="ojo"/></a></td>
             </tr>
         </table>
     </main>

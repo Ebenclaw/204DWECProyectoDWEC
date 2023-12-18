@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebeca Sánchez</title>
+</head>
+
+<body>
+    <script>
+        do {
+            var opcion = prompt("Elije un ejercicio (1-7):");
+            switch (opcion) {
+                case "1":
+                    alert("Crea un script que pida al usuario su fecha de nacimiento y le diga el día de la semana en que nació y el día de la semana de todos sus cumpleaños hasta este año");
+                    var fechaValida = /^(0?[1-9]|[12]\d|3[01])[\-](0?[1-9]|1[0-2])[\-](19|20)\d{2}$/;
+                    do {
+                        var fechaNac = prompt("Escriba su fecha de nacimiento (dd-mm-aaaa):");
+                    } while (!fechaValida.test(fechaNac));
+                    var dia = parseInt(fechaNac.substring(0, 2));
+                    var mes = parseInt(fechaNac.substring(3, 5));
+                    var anyo = parseInt(fechaNac.substring(6));
+                    var fechaNacDate = new Date(anyo, mes - 1, dia);
+                    var diaSemana = fechaNacDate.getDay();
+                    alert("Naciste un " + getDiaSemana(diaSemana));
+                    for (let index = anyo + 1; index <= 2023; index++) {
+                        var fechaIncrementada = new Date(index, mes - 1, dia);
+                        var diaSemanaAnyo = fechaIncrementada.getDay();
+                        switch (diaSemanaAnyo) {
+                            case 1:
+                                console.log("En el año " + index + " cumplistes años un lunes");
+                                break;
+                            case 2:
+                                console.log("En el año " + index + " cumplistes años un martes");
+                                break;
+                            case 3:
+                                console.log("En el año " + index + " cumplistes años un miercoles");
+                                break;
+                            case 4:
+                                console.log("En el año " + index + " cumplistes años un jueves");
+                                break;
+                            case 5:
+                                console.log("En el año " + index + " cumplistes años un viernes");
+                                break;
+                            case 6:
+                                console.log("En el año " + index + " cumplistes años un sabado");
+                                break;
+                            case 0:
+                                console.log("En el año " + index + " cumplistes años un domingo");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    break;
+                case "2":
+                    alert("Crea una función que reciba como parámetros: día, mes, año, hora, minutos y segundos y cree una fecha con esos datos. Si la función no recibe ningún parámetro creará la fecha actual. La función mostrará un alert con la información en el siguiente formato");
+                    function crearFecha(dia, mes, anyo, hora, min, sec) {
+                        if (dia != null || mes != null || anyo != null || hora != null || min != null || sec != null) {
+                            var fecha = new Date(anyo, mes - 1, dia, hora, min, sec);
+                        } else {
+                            var fecha = new Date();
+                        }
+                        return "Hoy es " + getDiaSemana(fecha.getDay()) + ", " + fecha.getDate() + " de " + getMes(fecha.getMonth()) + " de " + fecha.getFullYear() + " y son las " + fecha.getHours() + " horas, " + fecha.getMinutes() + " minutos y " + fecha.getSeconds() + " segundos.";
+                    }
+                    alert(crearFecha(10, 5, 2001, 15, 25, 34));
+                    break;
+                case "3":
+                    var mes = prompt("Escriba un mes (1-12)");
+                    var anyo = prompt("Escriba un año (1980-2023)");
+                    var fecha = new Date(anyo, mes - 1);
+                    var primerDia = new Date(anyo, mes - 1, 1).getDay();
+                    document.write('<table class="calendario">');
+                    document.write('<tr><th>Lunes</th><th>Martes</th><th>Miercoles</th><th>Jueves</th><th>Viernes</th><th>Sabado</th><th>Domingo</th></tr>');
+                    // for (let i = 0; i < 6; i++) {
+                    //     document.write('<tr>');
+                    //         for (let j = 0; j < 7; j++) {
+                    //             if (i==0) {
+                    //                 j=primerDia;
+
+                    //             }
+
+                    //         }
+                    //     document.write('</tr>');
+                    // }
+                    if (fecha.getDay() != 1) {
+                        if (fecha.getDay() == 0) {
+                            x = 0;
+                            document.write('<tr>');
+                            for (let i = 0; i < 6; i++) {
+                                document.write('<td></td>');
+                                x++;
+                            }
+                        } else {
+                            x = 0;
+                            document.write('<tr>');
+                            for (let i = 0; i < fecha.getDay() - 1; i++) {
+                                document.write('<td></td>');
+                                x++;
+                            }
+                        }
+                        while (x < 7 && fecha.getMonth() == (mes - 1)) {
+                            document.write('<td>' + fecha.getDate() + '</td>');
+                            fecha.setDate(fecha.getDate() + 1);
+                            x++;
+                        }
+                        document.write('</tr>');
+                    }
+                    do {
+                        x = 0;
+                        document.write('<tr>');
+                        while (x < 7 && fecha.getMonth() == (mes - 1)) {
+                            document.write('<td>' + fecha.getDate() + '</td>');
+                            fecha.setDate(fecha.getDate() + 1);
+                            x++;
+                        }
+                        document.write('</tr>');
+                    } while (fecha.getMonth() == (mes - 1));
+                    document.write('</table>');
+                    break;
+                case "4":
+                    const anyoMax = 2023;
+                    const anyoMin = 1980;
+                    //(random*(m-n+1))+n
+                    var timestamp;
+                    var fechaNacAleatoria;
+                    var mapa = new Map();
+                    for (let i = 0; i < 100; i++) {
+                        timestamp = (Math.random() * (1703977200 - 315529200 + 1)) + 315529200;
+                        fechaNacAleatoria = new Datetime(timestamp);
+                        map.set(i, fechaNacAleatoria);
+                    }
+                    var mesAbuscar = Number(prompt("Dime el mes en el que quieres saber cuantos cumpleaños hay: "));
+                    for (const [persona, fecha] of mapa) {
+                        if (fecha.getMonth() == mesAbuscar) {
+                            console.log(persona + "," + fecha.toLocaleDateString());
+                        }
+                    };
+                    break;
+                case "5":
+
+                    break;
+                case "6":
+                    var cp = prompt("Introduce un codigo postal");
+                    validarCodigoPostal(cp);
+                    function validarCodigoPostal(codigoPostalIntroducido) {
+                        // Inicializo 'resultado' al cp que introduce el usuario
+                        let resultado = document.getElementById("resultado");
+
+                        // Expresión regular para validar que el código postal tenga 5 dígitos
+                        var regex = /^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/;
+
+                        // Verificar si el código postal cumple con la expresión regular
+                        if (!regex.test(codigoPostalIntroducido)) {
+                            return alert('No cumple con el formato de 5 dígitos');
+                        }
+
+                        // Convertir el código postal a un número para comparar con el rango
+                        var codigoPostalNumero = parseInt(codigoPostalIntroducido, 10);
+
+                        // Verificar si el código postal está en el rango permitido
+                        if (codigoPostalNumero < 0 || codigoPostalNumero > 52999) {
+                            return alert('No está en el rango permitido 00000-52999');
+                        }
+
+                        return alert('Código postal válido');
+                    }
+                    break;
+                case "7":
+                    var dniValido = /^([XYZ]|\d)\d{7}(?![OUIoui])[A-Za-z]$/;
+                    function comprobarDni(dni) {
+                        if (dniValido.test(dni)) {
+                            // X -> 0
+                            // Y -> 1
+                            // Z -> 2
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } while (opcion != null);
+        function getMes(mes) {
+            switch (mes) {
+                case 0:
+                    return "enero";
+                    break;
+                case 1:
+                    return "febrero";
+                    break;
+                case 2:
+                    return "marzo";
+                    break;
+                case 3:
+                    return "abril";
+                    break;
+                case 4:
+                    return "mayo";
+                    break;
+                case 5:
+                    return "junio";
+                    break;
+                case 6:
+                    return "julio";
+                    break;
+                case 7:
+                    return "agosto";
+                    break;
+                case 8:
+                    return "septiembre";
+                    break;
+                case 9:
+                    return "octubre";
+                    break;
+                case 10:
+                    return "noviembre";
+                    break;
+                case 11:
+                    return "diciembre";
+                    break;
+                default:
+                    break;
+            }
+        }
+        function getDiaSemana(dia) {
+            let aDiasSemana = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+            return aDiasSemana[dia];
+        }
+    </script>
+</body>
+
+</html>
