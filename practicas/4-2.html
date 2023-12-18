@@ -139,42 +139,30 @@
                     };
                     break;
                 case "5":
-
+                    var codigo = prompt("Introduce el codigo de la granja");
+                    var validarCodigo = /^[aeiouAEIOU]\d{10}[a-zA-Z]$/;
+                    if (validarCodigo.test(codigo)) {
+                        alert("Codigo correcto");
+                    } else {
+                        alert("Codigo Incorrecto");
+                    }
                     break;
                 case "6":
-                    var cp = prompt("Introduce un codigo postal");
-                    validarCodigoPostal(cp);
-                    function validarCodigoPostal(codigoPostalIntroducido) {
-                        // Inicializo 'resultado' al cp que introduce el usuario
-                        let resultado = document.getElementById("resultado");
-
-                        // Expresión regular para validar que el código postal tenga 5 dígitos
-                        var regex = /^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$/;
-
-                        // Verificar si el código postal cumple con la expresión regular
-                        if (!regex.test(codigoPostalIntroducido)) {
-                            return alert('No cumple con el formato de 5 dígitos');
-                        }
-
-                        // Convertir el código postal a un número para comparar con el rango
-                        var codigoPostalNumero = parseInt(codigoPostalIntroducido, 10);
-
-                        // Verificar si el código postal está en el rango permitido
-                        if (codigoPostalNumero < 0 || codigoPostalNumero > 52999) {
-                            return alert('No está en el rango permitido 00000-52999');
-                        }
-
-                        return alert('Código postal válido');
+                    var codigoPostal = prompt("Introduce el codigo postal");
+                    var validarCodigo = /^([0-4]\d{4})|(5[0-2]\d{3})$/;
+                    if (validarCodigo.test(codigoPostal)) {
+                        alert("Codigo postal correcto");
+                    } else {
+                        alert("Codigo postal Incorrecto");
                     }
                     break;
                 case "7":
-                    var dniValido = /^([XYZ]|\d)\d{7}(?![OUIoui])[A-Za-z]$/;
-                    function comprobarDni(dni) {
-                        if (dniValido.test(dni)) {
-                            // X -> 0
-                            // Y -> 1
-                            // Z -> 2
-                        }
+                    var nif = prompt("Introduce tu NIF");
+                    var validarNif = /^[XYZ\d]\d{7}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+                    if (validarNif.test(nif)) {
+                        alert("NIF correcto");
+                    } else {
+                        alert("NIF Incorrecto");
                     }
                     break;
                 default:
